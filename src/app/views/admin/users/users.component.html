@@ -1,0 +1,124 @@
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Assessment(Martin Steven Odongo)</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Mongo/Yahoo!!!</a>
+          </li>
+           
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+
+<div class="container mt-4" > 
+            <b>Simple User Registation</b>
+<form>
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" [(ngModel)]="name" [ngModelOptions]="{standalone: true}"  class="form-control" id="name" placeholder="Enter Name"> 
+    </div>
+
+    <div class="form-group">
+        <label>Address</label>
+        <input type="text" class="form-control"  [(ngModel)]="address" [ngModelOptions]="{standalone: true}" id="address" placeholder="Enter Address"> 
+      </div>
+
+      <div class="form-group">
+        <label>Phone</label>
+        <input type="text" class="form-control" [(ngModel)]="phone" [ngModelOptions]="{standalone: true}" id="phone" placeholder="Enter Phone"> 
+      </div>
+      <br/>
+      <button type="submit" (click)="save()" class="btn btn-primary">Submit</button> 
+
+  </form>
+  <hr/>
+  <form>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" [(ngModel)]="symbol" placeholder="Enter Comany Name or Symbol....." aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-primary btn-block" (click)="loadData()"  type="button"> Search </button>
+        </div>
+      </div>
+     
+    <!-- <button (click)="loadData()" class="btn btn-primary"> Load Yahoo Finance Data</button> -->
+  </form>
+</div>
+  
+<div class="container mt-4" >
+    
+<a href="" class="btn btn-primary">+</a>       
+ <b>Users List</b>
+<table class="table">
+  <thead>    
+  <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Phone</th>  
+      <th scope="col">Option</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let StudentItem of StudentArray">
+      <td>{{StudentItem.name  | uppercase}}</td>
+      <td>{{StudentItem.address }}</td>
+      <td>{{StudentItem.phone }}</td>
+      <td>
+        <a href="#" type="button"  (click)="setUpdate(StudentItem)">Edit</a> |
+        <a  href="#" (click)="setDelete(StudentItem)">Delete</a>            
+      </td>
+    </tr>          
+  </tbody>
+</table>
+
+<!-- <h1>Angular Datatables Step by Step Example - ItSolutionStuff.com</h1> -->
+<!-- <table datatable [dtOptions]="dtOptions" class="row-border hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Body</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let fin of financeArray">
+        <td>{{ post.id }}</td>
+      <td>{{ post.title }}</td>
+      <td>{{ post.body }}</td>
+    </tr>
+  </tbody>
+</table> -->
+<b>Yahoo Data</b>
+<table class="table">
+  <thead>    
+  <tr>
+      <th scope="col">Company Name</th>
+      <th scope="col">Ticker Symbol</th>
+      <th scope="col">Current Price</th>  
+      <th scope="col">Change</th>
+      <th scope="col">Currency</th>
+ 
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let fin of financeArray">
+      <td>{{fin.quote.displayName}}</td>
+      <td>{{fin.quote.symbol}}</td>
+      <td>{{fin.quote.priceEpsCurrentYear}}</td> 
+      <td>{{fin.quote.regularMarketChangePercent}} % </td>
+      <td>{{fin.quote.currency}}</td> 
+       
+    </tr>          
+  </tbody>
+</table>
+
+</div>
